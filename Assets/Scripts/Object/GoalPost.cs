@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class GoalPost : Singleton<GoalPost>
 {
-    
+    public float leftEndPoint;
+    public float rightEndPoint;
+
+
 }
