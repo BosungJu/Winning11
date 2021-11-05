@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public List<Transform> spawnPoints;
-    public List<int> points;
+    public Transform spawnPoints;
+    private List<int> points = new List<int>();
+    public Transform awayParent;
     private int[,] difficultList = new int[6, 3] 
     { 
         { 6, 0, 0 }, { 4, 2, 0 }, { 3, 3, 0 },
@@ -14,7 +15,12 @@ public class PlayerManager : MonoBehaviour
 
     private void SpawnAwayPlayer(int grade)
     {
-        switch (grade) 
+        int index = Random.Range(0, points.Count);
+        Vector3 pos = spawnPoints.GetChild(points[index]).position;
+        
+        points.RemoveAt(index);
+
+        switch (grade) // instantiate set parent >> awayParent
         {
             case 0:
                 break;
@@ -27,7 +33,12 @@ public class PlayerManager : MonoBehaviour
 
     private void SpawnPlayer()
     {
-        // TODO 주사위 데이터 받아서 아군, 적 생성
+        points.Clear();
+        for (int i = 0; i < spawnPoints.childCount; ++i)
+        {
+            points.Add(i);
+        }
+
         int difficult = 0;
 
         for (int i = 0; i < 3; ++i)
