@@ -10,8 +10,6 @@ public class SoundManager : Singleton<SoundManager> {
 
     #region Global Variables
 
-    //COMPONENTS
-
     [Header("REFERENCES")]
     [SerializeField]
     private AudioSource musicAudioSource;
@@ -19,8 +17,6 @@ public class SoundManager : Singleton<SoundManager> {
     private AudioSource ambientAudioSource;
     [SerializeField]
     private AudioSource sfxAudioSource;
-
-    //SOUNDS
 
     [System.Serializable]
     public class SoundGroup {

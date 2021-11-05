@@ -13,7 +13,7 @@ public class LobbyManager : MonoBehaviour {
 
     #endregion
 
-    #region Scene Management
+    #region Functions
 
     public void LoadScene(int scene) {
         StartCoroutine(LoadSceneRoutine());
