@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IPlayer
+public class GoalPost : Singleton<GoalPost>
 {
-    public void OnHitted(Rigidbody2D ball);
+    
 }
