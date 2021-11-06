@@ -115,5 +115,12 @@ public class SoundManager : Singleton<SoundManager> {
         aimAudioSource.Play();
     }
 
+    /// <summary>
+    /// Get aimAudioSource
+    /// </summary>
+    public AudioSource GetAimAudioSource() {
+        return aimAudioSource;
+    }
+
     #endregion
 }
