@@ -17,6 +17,7 @@ public class ResultPanel : MonoBehaviour
     private void ChangeLobby()
     {
         SceneChanger.instance.ChangeScene("Lobby");
+        SoundManager.instance.PlayOneShotThere(Sound.Button);
     }
 
     private void Awake()
@@ -38,6 +39,7 @@ public class ResultPanel : MonoBehaviour
             {
                 bestPlayerName.text = "내가 쵝오";
             }
+            SoundManager.instance.PlayOneShotThere(Sound.Win);
         }
         else
         {
@@ -49,6 +51,7 @@ public class ResultPanel : MonoBehaviour
             {
                 bestPlayerName.text = "아 머해";
             }
+            SoundManager.instance.PlayOneShotThere(Sound.Fail);
         }
 
         try
