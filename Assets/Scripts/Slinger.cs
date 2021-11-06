@@ -39,6 +39,7 @@ public class Slinger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
     public void OnBeginDrag(PointerEventData eventData)
     {
         isDrag = true;
+        SoundManager.instance.PlayAiming();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -53,5 +54,12 @@ public class Slinger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
         m_Ball.AddForce(vec.normalized * 300f);
         slingerPoint.position = startRange.position;
         startRange.sizeDelta = new Vector2(140, 140);
+        float rotZ = Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg - 90f;
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        Vector2 screenToWorldPosition = Camera.main.ScreenToWorldPoint(rectTransform.transform.position);
+        EffectPooler.instance.SpawnEffect(Effect.Kick, screenToWorldPosition, new Vector3(0, 0, rotZ));
+        SoundManager.instance.StopAiming();
+        SoundManager.instance.PlayOneShotThere(Sound.Shoot);
+
     }
 }
