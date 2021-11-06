@@ -47,12 +47,13 @@ public class Boll : MonoBehaviour {
             // TODO goal effect
             // clear
             ResultData.resultCode = 0;
-            
+            UIManager.instance.DisplayResult();
         }
         else if (collision.CompareTag("OutLine"))
         {
             // TODO set result outline and end game
             ResultData.resultCode = 1;
+            UIManager.instance.DisplayResult();
         }
     }
 }

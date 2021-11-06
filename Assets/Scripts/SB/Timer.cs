@@ -12,6 +12,7 @@ public class Timer {
     private TimeSpan timePlaying;
     private float elapsedTime;
     private bool timerGoing;
+    public Action timeOutEvent;
 
     #endregion
 
@@ -51,6 +52,13 @@ public class Timer {
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
             string timePlayingStr = "½Ã°£: " + timePlaying.ToString("mm':'ss'.'ff");
             timerText.text = timePlayingStr;
+            
+            if (timePlaying.TotalSeconds > 11)
+            {
+                ResultData.resultCode = 2;
+                timeOutEvent();
+            }
+
             yield return null;
         }
         yield break;
