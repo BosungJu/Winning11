@@ -32,7 +32,7 @@ public class Timer {
     public void ResetTimer() {
         timerGoing = false;
         elapsedTime = 0f;
-        timerText.text = "시간: 00:00.00";
+        timerText.text = "00.00";
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public class Timer {
         while (timerGoing) {
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
-            string timePlayingStr = "시간: " + timePlaying.ToString("mm':'ss'.'ff");
+            string timePlayingStr = timePlaying.ToString("ss'.'ff");
             timerText.text = timePlayingStr;
             
             if (timePlaying.TotalSeconds > 11)
