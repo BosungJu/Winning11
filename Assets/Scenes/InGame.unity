@@ -1015,6 +1015,14 @@ PrefabInstance:
       propertyPath: ballCollider
       value: 
       objectReference: {fileID: 2113896182}
+    - target: {fileID: 7350316091848026100, guid: aaa0261c6f97eeb4491ffb5a62d39e70, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: 5a7b0476520493e40b4cb7e2d36f35cb, type: 3}
+    - target: {fileID: 7350316091848026100, guid: aaa0261c6f97eeb4491ffb5a62d39e70, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaa0261c6f97eeb4491ffb5a62d39e70, type: 3}
 --- !u!224 &1479113450 stripped
