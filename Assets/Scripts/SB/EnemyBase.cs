@@ -27,7 +27,7 @@ public abstract class EnemyBase : MonoBehaviour, IPlayer {
     }
 
     protected virtual Vector2 GetDirection(Rigidbody2D ball) {
-        return (transform.position - ball.transform.position).normalized;
+        return (ball.transform.position - transform.position).normalized;
     }
 
     #endregion

@@ -13,7 +13,7 @@ public class Enemy3 : EnemyBase {
     #region Main
 
     void Start() {
-        goalDirection = (transform.position - GoalPost.instance.transform.position).normalized;
+        goalDirection = (GoalPost.instance.transform.position - transform.position).normalized;
     }
 
     #endregion
