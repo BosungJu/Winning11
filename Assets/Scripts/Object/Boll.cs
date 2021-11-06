@@ -8,7 +8,7 @@ public class Boll : MonoBehaviour {
     private Vector2 lastVel;
 
     /// <summary>
-    /// ÀÓ½Ã·Î Å×½ºÆ® ¿ë
+    /// 임시로 테스트용
     /// </summary>
     void Start() {
         boll.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
@@ -37,3 +37,4 @@ public class Boll : MonoBehaviour {
             // clear ¿¬Ãâ
         }
     }
+}
