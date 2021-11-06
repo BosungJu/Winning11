@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Slinger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    public CircleCollider2D ballCollider;
     public Rigidbody2D m_Ball;
     public RectTransform startRange;
     public RectTransform slingerPoint;
@@ -53,5 +54,6 @@ public class Slinger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
         m_Ball.AddForce(vec.normalized * 300f);
         slingerPoint.position = startRange.position;
         startRange.sizeDelta = new Vector2(140, 140);
+        ballCollider.enabled = true;
     }
 }
