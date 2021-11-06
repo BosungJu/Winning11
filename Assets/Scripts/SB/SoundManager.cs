@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum Sound {
-    AmbientCrowd, MusicLobby, MusicGame, Shoot, Goal,
+    Bgm, Button, Dice, Enemy1, Enemy2, Enemy3, Player, Wall, Aiming, Shoot, Fail, Win
 }
 
 public class SoundManager : Singleton<SoundManager> {
@@ -12,9 +12,9 @@ public class SoundManager : Singleton<SoundManager> {
 
     [Header("REFERENCES")]
     [SerializeField]
-    private AudioSource musicAudioSource;
+    private AudioSource bgmAudioSource;
     [SerializeField]
-    private AudioSource ambientAudioSource;
+    private AudioSource aimAudioSource;
     [SerializeField]
     private AudioSource sfxAudioSource;
 
@@ -35,6 +35,7 @@ public class SoundManager : Singleton<SoundManager> {
     #region Main
 
     void Awake() {
+        DontDestroyOnLoad(gameObject);
         foreach (SoundGroup sound in sounds) {
             soundDict[sound.name] = sound.clip;
             volDict[sound.name] = sound.volume;
@@ -67,23 +68,47 @@ public class SoundManager : Singleton<SoundManager> {
     }
 
     /// <summary>
-    /// SoundManager의 musicAudioSource에서 BGM Play()
+    /// SoundManager의 bgmAudioSource에서 BGM Play()
     /// </summary>
-    public void PlayMusic(Sound name) {
-        musicAudioSource.Stop();
-        musicAudioSource.clip = soundDict[name];
-        musicAudioSource.volume = volDict[name];
-        musicAudioSource.Play();
+    public void PlayBGM(Sound name) {
+        bgmAudioSource.Stop();
+        bgmAudioSource.clip = soundDict[name];
+        bgmAudioSource.volume = volDict[name];
+        bgmAudioSource.Play();
+    }
+
+    /// <summary>
+    /// SoundManager의 bgmAudioSource에서 BGM Stop()
+    /// </summary>
+    public void StopBGM() {
+        bgmAudioSource.Stop();
+    }
+
+    /// <summary>
+    /// SoundManager의 aimAudioSource에서 Aiming 효과음 Play()
+    /// </summary>
+    public void PlayAiming() {
+        aimAudioSource.Stop();
+        aimAudioSource.clip = soundDict[Sound.Aiming];
+        aimAudioSource.volume = volDict[Sound.Aiming];
+        aimAudioSource.Play();
+    }
+
+    /// <summary>
+    /// SoundManager의 aimAudioSource에서 Aiming 효과음 Stop()
+    /// </summary>
+    public void StopAiming() {
+        aimAudioSource.Stop();
     }
 
     /// <summary>
     /// SoundManager의 ambientAudioSource에서 ambient 효과음 Play()
     /// </summary>
     public void PlayAmbient(Sound name) {
-        ambientAudioSource.Stop();
-        ambientAudioSource.clip = soundDict[name];
-        ambientAudioSource.volume = volDict[name];
-        ambientAudioSource.Play();
+        aimAudioSource.Stop();
+        aimAudioSource.clip = soundDict[name];
+        aimAudioSource.volume = volDict[name];
+        aimAudioSource.Play();
     }
 
     #endregion

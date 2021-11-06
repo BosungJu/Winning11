@@ -19,20 +19,6 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
---- !u!244 &-7268639778041142227
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: ae10a83fc13b69f42b979eb792e6633e
-  m_EffectName: Attenuation
-  m_MixLevel: 0a5a9ffcc8b8b0c4cadb27af28b9612f
-  m_Parameters: []
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
 --- !u!244 &-1317997171130932098
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -67,7 +53,6 @@ AudioMixerController:
   - guids:
     - 8452d8f65b9b43047952cd1f439f29a3
     - 315180d7350ebde4693e54cc6bf62da1
-    - 5dde8c36d04d6ce4a96e9fae0414fef6
     - 91e094c7923907546bb1a47cddd93106
     name: View
   m_CurrentViewIndex: 0
@@ -83,7 +68,6 @@ AudioMixerGroupController:
   m_GroupID: 8452d8f65b9b43047952cd1f439f29a3
   m_Children:
   - {fileID: 4033039983900081811}
-  - {fileID: 720317389367914811}
   - {fileID: -9059155241204572109}
   m_Volume: 56418a9f5d15c784b9e1422a04c4e7ea
   m_Pitch: 7075e845479b12f45aa92a304a2e760a
@@ -119,32 +103,13 @@ AudioMixerSnapshotController:
   m_SnapshotID: 60aa5b9cbaf543443bc64cd7462cad73
   m_FloatValues: {}
   m_TransitionOverrides: {}
---- !u!243 &720317389367914811
-AudioMixerGroupController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Ambient
-  m_AudioMixer: {fileID: 24100000}
-  m_GroupID: 5dde8c36d04d6ce4a96e9fae0414fef6
-  m_Children: []
-  m_Volume: 832d6f20a1019164d8103395855f456b
-  m_Pitch: 3056a03e68cd1524ea6423580a975412
-  m_Send: 00000000000000000000000000000000
-  m_Effects:
-  - {fileID: -7268639778041142227}
-  m_UserColorIndex: 0
-  m_Mute: 0
-  m_Solo: 0
-  m_BypassEffects: 0
 --- !u!243 &4033039983900081811
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Music
+  m_Name: BGM
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 315180d7350ebde4693e54cc6bf62da1
   m_Children: []
