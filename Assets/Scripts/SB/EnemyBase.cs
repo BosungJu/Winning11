@@ -21,6 +21,7 @@ public abstract class EnemyBase : MonoBehaviour, IPlayer {
         Vector3 direction = GetDirection(ball);
         ball.velocity = Vector3.zero;
         ball.transform.position = transform.position;
+        CameraShake.instance.Shake(direction.normalized);
         ball.AddForce(direction * speed, ForceMode2D.Impulse);
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         EffectPooler.instance.SpawnEffect(Effect.Kick, transform.position, new Vector3(0, 0, rotZ));
