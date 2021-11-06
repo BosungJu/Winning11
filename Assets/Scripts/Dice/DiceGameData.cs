@@ -14,5 +14,7 @@ public static class DiceGameData
     {
         redDice = Random.Range(0, 6);
         blueDice = Random.Range(0, 6);
+
+        DiceRoll.m_ViewBool = true;
     }
 }
