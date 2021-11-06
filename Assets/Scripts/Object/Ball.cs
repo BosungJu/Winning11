@@ -48,6 +48,8 @@ public class Ball : MonoBehaviour {
             Debug.Log("Goal");
             ResultData.resultCode = 0;
             UIManager.instance.DisplayResult();
+            EffectPooler.instance.SpawnEffect(Effect.Goal, collision.transform.position, Vector3.zero);
+            boll.velocity = Vector2.zero;
         }
         else if (collision.CompareTag("OutLine") && !isEnd)
         {
@@ -56,6 +58,7 @@ public class Ball : MonoBehaviour {
             Debug.Log("out");
             ResultData.resultCode = 1;
             UIManager.instance.DisplayResult();
+            boll.velocity = Vector2.zero;
         }
     }
 }

@@ -66,7 +66,7 @@ public class UIManager : Singleton<UIManager> {
     public void DisplayResult()
     {
         timer.StopTimer();
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         resultPanel.SetActive(true);
     }
 

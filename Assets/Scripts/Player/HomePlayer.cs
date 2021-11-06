@@ -43,6 +43,10 @@ public class HomePlayer : MonoBehaviour, IPlayer // collider ´Â trigger·Î
         Vector2 direction = new Vector3(Random.Range(left, right), GoalPost.instance.transform.position.y, 0) - transform.position;
         ball.position = transform.position;
         ball.velocity = direction.normalized * scala;
+
+        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        EffectPooler.instance.SpawnEffect(Effect.Kick, transform.position, new Vector3(0, 0, rotZ));
+        SoundManager.instance.PlayOneShotThere(Sound.Player);
     }
 
     public string GetName()
