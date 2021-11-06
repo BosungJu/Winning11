@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviour {
 
+    public GameObject popUp;
+    public GameObject logo;
+    public GameObject particleObj;
+
     #region Main
 
     private void Awake() {
@@ -23,6 +27,13 @@ public class LobbyManager : MonoBehaviour {
     public void StartGame(string scene) {
         SceneChanger.instance.ChangeScene(scene);
         SoundManager.instance.PlayOneShotThere(Sound.Button);
+    }
+
+    public void DisplayPopup()
+    {
+        popUp.SetActive(true);
+        logo.SetActive(false);
+        particleObj.SetActive(false);
     }
 
     #endregion
