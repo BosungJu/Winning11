@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class HomePlayer : MonoBehaviour, IPlayer // collider ´Â trigger·Î
 {
     private bool isDrag;
-
+    private string pName;
     private void OnDragging(Vector3 pos)
     {
         if (isDrag)
