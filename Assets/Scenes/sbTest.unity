@@ -321,6 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 1789243986}
   pausePanel: {fileID: 1280514308}
+  resultPanel: {fileID: 0}
 --- !u!114 &1511540182
 MonoBehaviour:
   m_ObjectHideFlags: 0
