@@ -8,7 +8,15 @@ public class Boll : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IPlayer player = collision.gameObject.GetComponent<IPlayer>();
-        player.OnHitted(boll);
+        if (collision.CompareTag("Player"))
+        {
+            IPlayer player = collision.gameObject.GetComponent<IPlayer>();
+            player.OnHitted(boll);
+        }
+        else if (collision.CompareTag("GoalPost"))
+        {
+            // TODO goal effect
+            // clear ø¨√‚
+        }
     }
 }
