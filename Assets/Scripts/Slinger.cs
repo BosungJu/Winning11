@@ -55,5 +55,6 @@ public class Slinger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
         slingerPoint.position = startRange.position;
         startRange.sizeDelta = new Vector2(140, 140);
         ballCollider.enabled = true;
+        arrow.gameObject.SetActive(false);
     }
 }
