@@ -13,6 +13,8 @@ public class GoalPost : Singleton<GoalPost>
     public GameObject rightPost;
     public GameObject centerPost;
 
+    private const float width = 0.4255f;
+
     public void Awake()
     {
         GameManager.instance.startGameEvent += SetPost;
@@ -21,7 +23,8 @@ public class GoalPost : Singleton<GoalPost>
 
     public void SetPost()
     {
-        float width = centerPost.transform.localScale.x;
+        DiceGameData.blueDice = 6;
+        
         float pos = -(DiceGameData.blueDice / 2 + (DiceGameData.blueDice % 2 == 0 ? -0.5f : 0)) * width;
 
         Instantiate(leftPost, transform).transform.localPosition = new Vector3(pos - width, 0, 0);
