@@ -63,6 +63,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5268492278641149227, guid: ab8eb1f6abd3ebe48b7f597d3a77d6ff, type: 3}
+      propertyPath: m_Radius
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268492278641149227, guid: ab8eb1f6abd3ebe48b7f597d3a77d6ff, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.22669566
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab8eb1f6abd3ebe48b7f597d3a77d6ff, type: 3}
 --- !u!1 &4771396905980276908 stripped
