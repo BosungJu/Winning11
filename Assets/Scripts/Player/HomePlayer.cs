@@ -34,15 +34,15 @@ public class HomePlayer : MonoBehaviour, IPlayer // collider ´Â trigger·Î
         isDrag = false;
     }
 
-    public void OnHitted(Rigidbody2D boll)
+    public void OnHitted(Rigidbody2D ball)
     {
-        float scala = boll.velocity.sqrMagnitude;
+        float scala = Mathf.Sqrt(ball.velocity.sqrMagnitude);
         float left = GoalPost.instance.leftEndPoint;
         float right = GoalPost.instance.rightEndPoint;
 
         Vector2 direction = new Vector3(Random.Range(left, right), GoalPost.instance.transform.position.y, 0) - transform.position;
-        boll.position = transform.position;
-        boll.velocity = direction.normalized * scala;
+        ball.position = transform.position;
+        ball.velocity = direction.normalized * scala;
     }
 
     public string GetName()

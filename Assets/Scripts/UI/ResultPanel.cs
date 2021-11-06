@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class ResultPanel : MonoBehaviour
     public Text bestPlayerName;
     public Button mainBtn;
 
-    private string[] resultTexts = { "Goal", "Line Out", "Time Out"};
+    private string[] resultTexts = { "Goal", "선넘음", "시간 땡"};
 
     private void ChangeLobby()
     {
@@ -26,8 +27,38 @@ public class ResultPanel : MonoBehaviour
     private void OnEnable()
     {
         resultText.text = resultTexts[ResultData.resultCode];
-        bestPlayerName.text = ResultData.resultCode == 0 ? ResultData.lastHitHomePlayer.GetName() : ResultData.lastHitAwayPlayer.GetName();
-        bestPlayerImage.sprite = Resources.Load<Sprite>(@"Images\" + (ResultData.resultCode == 0 ? "HomePlayer" : "AwayPlayerL" + ResultData.lastHitAwayPlayer.level + "Face"));
-        // TODO image update
+
+        if (ResultData.resultCode == 0)
+        {
+            if (ResultData.lastHitHomePlayer != null) 
+            {
+                bestPlayerName.text = ResultData.lastHitHomePlayer.GetName();
+            }
+            else
+            {
+                bestPlayerName.text = "내가 쵝오";
+            }
+        }
+        else
+        {
+            if (ResultData.lastHitAwayPlayer != null)
+            {
+                bestPlayerName.text = ResultData.lastHitAwayPlayer.GetName();
+            }
+            else
+            {
+                bestPlayerName.text = "아 머해";
+            }
+        }
+
+        try
+        {
+            bestPlayerImage.sprite = Resources.Load<Sprite>(@"Images\" + (ResultData.resultCode == 0 ? "HomePlayer" : "AwayPlayerL" + ResultData.lastHitAwayPlayer.level + "Face"));
+            // TODO image update
+        }
+        catch (Exception ex)
+        {
+            bestPlayerImage.sprite = null;
+        }
     }
 }
