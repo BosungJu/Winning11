@@ -37,7 +37,7 @@ public class Timer {
     /// <summary>
     /// 게임 진행 시간 정지
     /// </summary>
-    public void EndTimer() {
+    public void StopTimer() {
         timerGoing = false;
     }
 

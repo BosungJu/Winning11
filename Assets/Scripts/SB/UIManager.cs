@@ -11,6 +11,8 @@ public class UIManager : Singleton<UIManager> {
     [Header("REFERENCES")]
     [SerializeField]
     private Text timerText;
+    [SerializeField]
+    private GameObject pausePanel;
     private Timer timer;
 
     #endregion
@@ -18,11 +20,15 @@ public class UIManager : Singleton<UIManager> {
     #region Main
 
     void Awake() {
+        Time.timeScale = 1;
         timer = new Timer(timerText);
         //GameManager.instance.startGameEvent += StartTimer;
     }
 
     void Start() {
+        if (pausePanel.activeSelf) {
+            pausePanel.SetActive(false);
+        }
         StartTimer();
     }
 
@@ -32,6 +38,18 @@ public class UIManager : Singleton<UIManager> {
 
     private void StartTimer() {
         timer.ResetTimer();
+        StartCoroutine(timer.StartTimerRoutine());
+    }
+    
+    public void PauseGame() {
+        timer.StopTimer();
+        Time.timeScale = 0;
+        pausePanel.SetActive(true);
+    }
+
+    public void ResumeGame() {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1;
         StartCoroutine(timer.StartTimerRoutine());
     }
 
