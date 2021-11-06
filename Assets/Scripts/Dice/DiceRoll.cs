@@ -16,11 +16,11 @@ public class DiceRoll : MonoBehaviour
 
     bool m_ViewBool  = false;
     bool m_NextScene = false;
-    public bool CupDownMoveBool = false;   // ³»·Á°¥ ¶§
-    bool CupUpMoveBool = false;     // ¿Ã¶ó°¥ ¶§
+    public bool CupDownMoveBool = false;   // ë‚´ë ¤ê°ˆ ë•Œ
+    bool CupUpMoveBool = false;     // ì˜¬ë¼ê°ˆ ë•Œ
 
-    float delta = 17.0f; // ÁÂ(¿ì)·Î ÀÌµ¿°¡´ÉÇÑ(x)ÃÖ´ë°ª
-    float speed = 8.0f; // ÀÌµ¿¼Óµµ
+    float delta = 17.0f; // ì¢Œ(ìš°)ë¡œ ì´ë™ê°€ëŠ¥í•œ(x)ìµœëŒ€ê°’
+    float speed = 8.0f; // ì´ë™ì†ë„
 
     private void Start()
     {
@@ -47,18 +47,18 @@ public class DiceRoll : MonoBehaviour
     }
 
     /// <summary>
-    /// ÁÖ»çÀ§¸¦ ±¼¸± ½Ã.
+    /// ì£¼ì‚¬ìœ„ë¥¼ êµ´ë¦´ ì‹œ.
     /// </summary>
     public void OnButtonClick()
     {
         if (m_NextScene == true) {
-            // °ÔÀÓ ½ÃÀÛ ¾À
+            // ê²Œì„ ì‹œì‘ ì”¬
             //SceneManager.LoadScene("bsTest");
             SceneChanger.instance.ChangeScene("InGame");
             return;
         }
 
-        DiceGameData.RollDice();    // ÁÖ»çÀ§ ¼ıÀÚ Á¤ÇÏ±â.
+        DiceGameData.RollDice();    // ì£¼ì‚¬ìœ„ ìˆ«ì ì •í•˜ê¸°.
 
         if (CupDownMoveBool == false)
         {
@@ -75,7 +75,7 @@ public class DiceRoll : MonoBehaviour
     }
 
     /// <summary>
-    /// ÄÅ À§·Î ¿òÁ÷ÀÌ±â
+    /// ì»µ ìœ„ë¡œ ì›€ì§ì´ê¸°
     /// </summary>
     void CupUpMove()
     {
@@ -86,7 +86,7 @@ public class DiceRoll : MonoBehaviour
     }
 
     /// <summary>
-    /// ÄÅ ¾Æ·¡·Î ¿òÁ÷ÀÌ±â
+    /// ì»µ ì•„ë˜ë¡œ ì›€ì§ì´ê¸°
     /// </summary>
     void CupDownMove()
     {
@@ -95,7 +95,7 @@ public class DiceRoll : MonoBehaviour
     }
 
     /// <summary>
-    /// ÁÖ»çÀ§ ´«ÀÇ ¼ö¿¡ µû¶ó ¾Ë¸Â´Â ÀÌ¹ÌÁö¸¦ Ãâ·Â.
+    /// ì£¼ì‚¬ìœ„ ëˆˆì˜ ìˆ˜ì— ë”°ë¼ ì•Œë§ëŠ” ì´ë¯¸ì§€ë¥¼ ì¶œë ¥.
     /// </summary>
     void viewDIce()
     {

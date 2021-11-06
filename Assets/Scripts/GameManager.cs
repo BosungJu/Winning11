@@ -12,10 +12,9 @@ public class GameManager : Singleton<GameManager>
     {
         StartGame();
     }
-
     public void StartGame()
     {
-        // TODO ½ÃÀÛ ¼³Á¤ ¹× ¾Æ±º ¼±¼ö ¹èÄ¡ ½ÃÀÛ.
+        // TODO ì‹œì‘ ì„¤ì • ë° ì•„êµ° ì„ ìˆ˜ ë°°ì¹˜ ì‹œì‘.
         startGameEvent();
     }
 
