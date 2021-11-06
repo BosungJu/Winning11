@@ -7,8 +7,8 @@ public class PlayerManager : MonoBehaviour
     private List<int> points = new List<int>();
     private int[,] difficultList = new int[6, 3] 
     { 
-        { 6, 0, 0 }, { 4, 2, 0 }, { 3, 3, 0 },
-        { 3, 2, 1 }, { 2, 3, 1 }, { 2, 2, 2 } 
+        { 4, 2, 0 }, { 3, 2, 1 }, { 3, 2, 2 },
+        { 2, 3, 1 }, { 3, 3, 3 }, { 4, 4, 3 } 
     };
 
     public Transform spawnPoints;
