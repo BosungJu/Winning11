@@ -17,7 +17,7 @@ public class LobbyManager : MonoBehaviour {
 
     void Start() {
         SoundManager.instance.PlayBGM(Sound.Bgm);
-        SoundManager.instance.ChangeBounceVol(1);
+        SoundManager.instance.ChangeBounceVol(0.8f);
     }
 
     #endregion
