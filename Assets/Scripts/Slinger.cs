@@ -12,7 +12,7 @@ public class Slinger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
     public RectTransform slingerPoint;
     public RectTransform arrow;
     private Camera cam;
-    private float maxSize = 1.1f;
+    private float maxSize = 1.4f;
     private float startSizeOffset;
 
     void Start()
