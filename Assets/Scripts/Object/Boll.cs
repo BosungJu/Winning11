@@ -8,7 +8,7 @@ public class Boll : MonoBehaviour {
     private Vector2 lastVel;
 
     /// <summary>
-    /// �ӽ÷� �׽�Ʈ ��
+    /// ÀÓ½Ã·Î Å×½ºÆ® ¿ë
     /// </summary>
     void Start() {
         boll.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
@@ -32,6 +32,8 @@ public class Boll : MonoBehaviour {
             IPlayer player = collision.gameObject.GetComponent<IPlayer>();
             player.OnHitted(boll);
         }
-
+        else if (collision.CompareTag("GoalPost")) {
+            // TODO goal effect
+            // clear ¿¬Ãâ
+        }
     }
-}
