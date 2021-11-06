@@ -4,22 +4,30 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ResultPanel : MonoBehaviour, IPointerDownHandler
+public class ResultPanel : MonoBehaviour
 {
-    public Text remainingTime;
     public Text resultText;
-    public Text bestPlayer;
-    public Timer timer;
+    public Image bestPlayerImage;
+    public Text bestPlayerName;
+    public Button mainBtn;
 
-    public void OnPointerDown(PointerEventData eventData)
+    private string[] resultTexts = { "Goal", "Line Out", "Time Out"};
+
+    private void ChangeLobby()
     {
         SceneChanger.instance.ChangeScene("Lobby");
     }
 
+    private void Awake()
+    {
+        mainBtn.onClick.AddListener(() => ChangeLobby());
+    }
+
     private void OnEnable()
     {
-        remainingTime.text = "Remaining Time: " + timer.GetElapsedTime().ToString();
-        resultText.text = "Result: " + "¼º°ø";
-        bestPlayer.text = "";
+        resultText.text = resultTexts[ResultData.resultCode];
+        bestPlayerName.text = ResultData.resultCode == 0 ? ResultData.lastHitHomePlayer : ResultData.lastHitAwayPlayer;
+        bestPlayerImage.sprite = Resources.Load<Sprite>(@"Images\" + (ResultData.resultCode == 0 ? "HomePlayer" : "AwayPlayerCoin"));
+        // TODO image update
     }
 }
