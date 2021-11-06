@@ -16,7 +16,7 @@ public class DiceRoll : MonoBehaviour
 
     bool m_ViewBool  = false;
     bool m_NextScene = false;
-    public bool CupDownMoveBool = false;   // 내려갈 때
+    public static bool CupDownMoveBool = false;   // 내려갈 때
     bool CupUpMoveBool = false;     // 올라갈 때
 
     float delta = 17.0f; // 좌(우)로 이동가능한(x)최대값
@@ -35,7 +35,7 @@ public class DiceRoll : MonoBehaviour
         {
             CupDownMove();
 
-            if (Mathf.Approximately(m_Cup.transform.localPosition.y, 0))
+            if (m_Cup.transform.localPosition.y == 0)
             {
                 CupMove();
             }
@@ -51,14 +51,13 @@ public class DiceRoll : MonoBehaviour
     /// </summary>
     public void OnButtonClick()
     {
-        if (m_NextScene == true) {
-            // 게임 시작 씬
-            //SceneManager.LoadScene("bsTest");
-            SceneChanger.instance.ChangeScene("InGame");
-            return;
-        }
-
         DiceGameData.RollDice();    // 주사위 숫자 정하기.
+
+        if (m_NextScene == true)
+        {
+            // 게임 시작 씬
+            SceneManager.LoadScene("bsTest");
+        }
 
         if (CupDownMoveBool == false)
         {
