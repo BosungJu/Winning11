@@ -16,8 +16,12 @@ public class Ball : MonoBehaviour {
         if (collision.collider.CompareTag("Wall")) {
             Vector2 vel = lastVel;
             float speed = vel.magnitude;
-            Vector2 direction = Vector2.Reflect(vel.normalized, collision.GetContact(0).normal);
+            ContactPoint2D contact = collision.GetContact(0);
+            float rotZ = contact.point.x > 0 ? -90 : 90;
+            Vector2 direction = Vector2.Reflect(vel.normalized, contact.normal);
             boll.velocity = direction * speed;
+            SoundManager.instance.PlayOneShotThere(Sound.Wall);
+            EffectPooler.instance.SpawnEffect(Effect.Bounce, contact.point, new Vector3(0, 0, rotZ));
         }
     }
 

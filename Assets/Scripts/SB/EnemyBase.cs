@@ -16,7 +16,7 @@ public abstract class EnemyBase : MonoBehaviour, IPlayer {
 
     #region Functions
 
-    public void OnHitted(Rigidbody2D ball) {
+    public virtual void OnHitted(Rigidbody2D ball) {
         float speed = GetSpeed(ball);
         Vector3 direction = GetDirection(ball);
         ball.velocity = Vector3.zero;

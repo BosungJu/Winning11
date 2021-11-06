@@ -21,6 +21,7 @@ public class LobbyManager : MonoBehaviour {
 
     public void StartGame(string scene) {
         SceneChanger.instance.ChangeScene(scene);
+        SoundManager.instance.PlayOneShotThere(Sound.Button);
     }
 
     #endregion

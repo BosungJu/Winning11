@@ -7,4 +7,9 @@ public class Enemy1 : EnemyBase {
     {
         level = 1;
     }
+
+    public override void OnHitted(Rigidbody2D ball) {
+        base.OnHitted(ball);
+        SoundManager.instance.PlayOneShotThere(Sound.Enemy1);
+    }
 }
