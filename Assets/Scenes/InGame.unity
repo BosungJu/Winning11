@@ -1126,6 +1126,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 715560812}
     m_Modifications:
+    - target: {fileID: 4985003770624583244, guid: af18ce28502abb844a16392c78774e82, type: 3}
+      propertyPath: m_Text
+      value: MAIN
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985003770624583244, guid: af18ce28502abb844a16392c78774e82, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: f176e89b3906f3d46aa1593d0744f7a2, type: 3}
     - target: {fileID: 4985003770670760178, guid: af18ce28502abb844a16392c78774e82, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1218,6 +1226,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4985003772170894742, guid: af18ce28502abb844a16392c78774e82, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985003772170894742, guid: af18ce28502abb844a16392c78774e82, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 96c9e338cb4363b4786e45a6f48f1b8f, type: 3}
     - target: {fileID: 4985003772170894743, guid: af18ce28502abb844a16392c78774e82, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
