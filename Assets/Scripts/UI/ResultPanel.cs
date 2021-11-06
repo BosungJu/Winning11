@@ -45,13 +45,18 @@ public class ResultPanel : MonoBehaviour
 
     private void OnEnable()
     {
-        resultText.text = resultTexts[ResultData.resultCode];
+        int result = ResultData.resultCode;
 
-        bestPlayerName.text = playerNames[ResultData.resultCode, UnityEngine.Random.Range(0, 9)];
-        SoundManager.instance.PlayOneShotThere(ResultData.resultCode == 0 ? Sound.Win : Sound.Fail);
+        resultText.text = resultTexts[result];
+        bestPlayerName.text = playerNames[result, UnityEngine.Random.Range(0, 9)];
+
+        SoundManager.instance.PlayOneShotThere(result == 0 ? Sound.Win : Sound.Fail);
         SoundManager.instance.ChangeBounceVol(0.2f);
+        if (result == 0) {
+            EffectPooler.instance.SpawnEffect(Effect.Win, Vector2.zero, Vector3.zero);
+        }
 
-        if (ResultData.resultCode == 0)
+        if (result == 0)
         {
             bestPlayerImage.sprite = Resources.Load<Sprite>(@"Images\HomePlayer");
         }
