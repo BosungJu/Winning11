@@ -7,8 +7,12 @@ public class LobbyManager : MonoBehaviour {
 
     #region Main
 
+    private void Awake() {
+        Time.timeScale = 1;
+    }
+
     void Start() {
-        //SoundManager.instance.PlayMusic(Sound.MusicLobby);
+        SoundManager.instance.PlayBGM(Sound.Bgm);
     }
 
     #endregion
