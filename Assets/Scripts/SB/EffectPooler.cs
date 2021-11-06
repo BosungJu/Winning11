@@ -40,13 +40,14 @@ public class EffectPooler : Singleton<EffectPooler> {
     /// <summary>
     /// 이펙트 생성하기
     /// </summary>
-    public void SpawnEffect(Effect name, Vector2 position, Quaternion rotation) {
+    public void SpawnEffect(Effect name, Vector2 position, Vector3 rotEuler) {
         if (queueDict[name].Count < 1) {
             InstantiateEffect(name);
         }
         ParticleSystem particle = queueDict[name].Dequeue();
         particle.transform.position = position;
-        particle.transform.rotation = rotation;
+        particle.transform.eulerAngles = rotEuler;
+        //particle.transform.rotation = rotEuler;
         particle.gameObject.SetActive(true);
         particle.Play();
         StartCoroutine(FinishEffectRoutine(name, particle));
