@@ -6,4 +6,5 @@ using UnityEngine.EventSystems;
 public interface IPlayer
 {
     public void OnHitted(Rigidbody2D boll);
+    public string GetName();
 }

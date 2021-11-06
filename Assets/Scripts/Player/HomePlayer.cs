@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class HomePlayer : MonoBehaviour, IPlayer // collider 는 trigger로
 {
     private bool isDrag;
-
+    private string pName;
     private void OnDragging(Vector3 pos)
     {
         if (isDrag)
@@ -43,5 +43,10 @@ public class HomePlayer : MonoBehaviour, IPlayer // collider 는 trigger로
         Vector2 direction = new Vector3(Random.Range(left, right), GoalPost.instance.transform.position.y, 0) - transform.position;
         boll.position = transform.position;
         boll.velocity = direction.normalized * scala;
+    }
+
+    public string GetName()
+    {
+        return pName;
     }
 }

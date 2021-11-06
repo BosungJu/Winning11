@@ -10,6 +10,8 @@ public abstract class EnemyBase : MonoBehaviour, IPlayer {
     [SerializeField]
     protected float shootPwrMultiplier;
 
+    private string pName;
+
     #endregion
 
     #region Functions
@@ -28,6 +30,11 @@ public abstract class EnemyBase : MonoBehaviour, IPlayer {
 
     protected virtual Vector2 GetDirection(Rigidbody2D ball) {
         return (ball.transform.position - transform.position).normalized;
+    }
+
+    public string GetName()
+    {
+        return pName;
     }
 
     #endregion
