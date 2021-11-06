@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boll : MonoBehaviour {
+public class Ball : MonoBehaviour {
 
     public Rigidbody2D boll;
     private Vector2 lastVel;
+    private bool isEnd = false;
 
     private void FixedUpdate() {
         lastVel = boll.velocity;
@@ -36,15 +37,19 @@ public class Boll : MonoBehaviour {
         }
 
 
-        if (collision.CompareTag("GoalPost")) {
+        if (collision.CompareTag("GoalPost") && !isEnd) {
             // TODO goal effect
+            isEnd = true;
             // clear
+            Debug.Log("Goal");
             ResultData.resultCode = 0;
             UIManager.instance.DisplayResult();
         }
-        else if (collision.CompareTag("OutLine"))
+        else if (collision.CompareTag("OutLine") && !isEnd)
         {
             // TODO set result outline and end game
+            isEnd = true;
+            Debug.Log("out");
             ResultData.resultCode = 1;
             UIManager.instance.DisplayResult();
         }
