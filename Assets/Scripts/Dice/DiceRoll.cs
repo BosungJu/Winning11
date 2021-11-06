@@ -39,14 +39,19 @@ public class DiceRoll : MonoBehaviour
 
             if (Mathf.Approximately(m_Cup.transform.localPosition.y, 0))
             {
-                CupMove();
+                m_delay += Time.deltaTime;
+
+                if(m_delay < 0.1f || m_delay > 3f)
+                {
+                    CupMove();
+                }
             }
         }
         else if (CupUpMoveBool == true)
         {
             m_delay += Time.deltaTime;
 
-            if (m_delay > 0.3f)
+            if (m_delay > 0.45f)
             {
                 m_delayBool = true;
                 CupUpMove();
@@ -100,7 +105,6 @@ public class DiceRoll : MonoBehaviour
     /// </summary>
     void CupUpMove()
     {
-        Debug.Log("들어오녀ㅑ");
         if (m_delayBool)
         {
             m_text.text = "";
