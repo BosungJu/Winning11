@@ -115,6 +115,14 @@ public class SoundManager : Singleton<SoundManager> {
         aimAudioSource.Play();
     }
 
+    public void ChangeBounceVol(int volume) {
+        volDict[Sound.Player] = volume;
+        volDict[Sound.Enemy1] = volume;
+        volDict[Sound.Enemy2] = volume;
+        volDict[Sound.Enemy3] = volume;
+        volDict[Sound.Wall] = volume;
+    }
+
     /// <summary>
     /// Get aimAudioSource
     /// </summary>
