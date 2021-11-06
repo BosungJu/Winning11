@@ -27,14 +27,32 @@ public class Boll : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("Player")) {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
             IPlayer player = collision.gameObject.GetComponent<IPlayer>();
             player.OnHitted(boll);
+            ResultData.lastHitAwayPlayer = (EnemyBase)player;
         }
-        else if (collision.CompareTag("GoalPost")) {
+        else if (collision.CompareTag("Home"))
+        {
+            IPlayer player = collision.gameObject.GetComponent<IPlayer>();
+            player.OnHitted(boll);
+            ResultData.lastHitHomePlayer = player;
+        }
+
+
+        if (collision.CompareTag("GoalPost")) {
             // TODO goal effect
-            // clear ¿¬Ãâ
+            // clear
+            ResultData.resultCode = 0;
+            
+        }
+        else if (collision.CompareTag("OutLine"))
+        {
+            // TODO set result outline and end game
+            ResultData.resultCode = 1;
         }
     }
 }
