@@ -24,7 +24,7 @@ public class DiceRoll : MonoBehaviour
 
     private void Start()
     {
-        m_text.text = "Tap to Roll Dices";
+        m_text.text = "Tap to Roll Dice";
         m_Redimage.sprite = m_ListSprite[0];
         m_Blueimage.sprite = m_ListSprite[6];
     }
@@ -54,6 +54,7 @@ public class DiceRoll : MonoBehaviour
         if (m_NextScene == true) {
             // 게임 시작 씬
             //SceneManager.LoadScene("bsTest");
+            SoundManager.instance.PlayOneShotThere(Sound.Button);
             SceneChanger.instance.ChangeScene("InGame");
             return;
         }
@@ -62,16 +63,28 @@ public class DiceRoll : MonoBehaviour
 
         if (CupDownMoveBool == false)
         {
-            CupDownMoveBool = true;
-            CupUpMoveBool = false;
+            MoveCupDown();
         }
         else if(CupUpMoveBool == false && CupDownMoveBool == true)
         {
-            CupDownMoveBool = false;
-            CupUpMoveBool = true;
-
-            m_NextScene = true;
+            MoveCupUp();
         }
+    }
+
+    private bool canPlaySound;
+
+    private void MoveCupDown() {
+        CupDownMoveBool = true;
+        CupUpMoveBool = false;
+        canPlaySound = true;
+        SoundManager.instance.PlayOneShotThere(Sound.Button);
+    }
+
+    private void MoveCupUp() {
+        CupDownMoveBool = false;
+        CupUpMoveBool = true;
+        m_NextScene = true;
+        SoundManager.instance.PlayOneShotThere(Sound.Button);
     }
 
     /// <summary>
@@ -150,5 +163,9 @@ public class DiceRoll : MonoBehaviour
         Vector3 v =m_Cup.transform.position;
         v.x += delta * Mathf.Sin(Time.time * speed);
         m_Cup.transform.position = v;
+        if (canPlaySound) {
+            SoundManager.instance.PlayOneShotThere(Sound.Dice);
+            canPlaySound = false;
+        }
     }
 }

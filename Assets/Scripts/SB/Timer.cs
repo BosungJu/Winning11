@@ -10,7 +10,7 @@ public class Timer {
 
     private Text timerText;
     private TimeSpan timePlaying;
-    private float elapsedTime;
+    private float currentTime;
     private bool timerGoing;
     public Action timeOutEvent;
 
@@ -31,8 +31,8 @@ public class Timer {
     /// </summary>
     public void ResetTimer() {
         timerGoing = false;
-        elapsedTime = 0f;
-        timerText.text = "시간: 00:00.00";
+        currentTime = 11f;
+        timerText.text = "11.00";
     }
 
     /// <summary>
@@ -48,12 +48,12 @@ public class Timer {
     public IEnumerator StartTimerRoutine() {
         timerGoing = true;
         while (timerGoing) {
-            elapsedTime += Time.deltaTime;
-            timePlaying = TimeSpan.FromSeconds(elapsedTime);
-            string timePlayingStr = "시간: " + timePlaying.ToString("mm':'ss'.'ff");
+            currentTime -= Time.deltaTime;
+            timePlaying = TimeSpan.FromSeconds(currentTime);
+            string timePlayingStr = timePlaying.ToString("ss'.'ff");
             timerText.text = timePlayingStr;
             
-            if (timePlaying.TotalSeconds > 11)
+            if (timePlaying.TotalSeconds < 0)
             {
                 ResultData.resultCode = 2;
                 timeOutEvent();
@@ -72,7 +72,7 @@ public class Timer {
     /// 게임 진행 시간 가져오기
     /// </summary>
     public float GetElapsedTime() {
-        return elapsedTime;
+        return currentTime;
     }
 
     #endregion

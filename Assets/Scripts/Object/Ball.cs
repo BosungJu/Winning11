@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour {
 
-    public Rigidbody2D boll;
+    public Rigidbody2D ball;
     private Vector2 lastVel;
     private bool isEnd = false;
 
     private void FixedUpdate() {
-        lastVel = boll.velocity;
+        lastVel = ball.velocity;
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.CompareTag("Wall")) {
             Vector2 vel = lastVel;
             float speed = vel.magnitude;
-            Vector2 direction = Vector2.Reflect(vel.normalized, collision.GetContact(0).normal);
-            boll.velocity = direction * speed;
+            ContactPoint2D contact = collision.GetContact(0);
+            float rotZ = contact.point.x > 0 ? -90 : 90;
+            Vector2 direction = Vector2.Reflect(vel.normalized, contact.normal);
+            ball.velocity = direction * speed;
+            SoundManager.instance.PlayOneShotThere(Sound.Wall);
+            EffectPooler.instance.SpawnEffect(Effect.Bounce, contact.point, new Vector3(0, 0, rotZ));
         }
     }
 
@@ -26,13 +30,13 @@ public class Ball : MonoBehaviour {
         if (collision.CompareTag("Enemy"))
         {
             IPlayer player = collision.gameObject.GetComponent<IPlayer>();
-            player.OnHitted(boll);
+            player.OnHitted(ball);
             ResultData.lastHitAwayPlayer = (EnemyBase)player;
         }
         else if (collision.CompareTag("Home"))
         {
             IPlayer player = collision.gameObject.GetComponent<IPlayer>();
-            player.OnHitted(boll);
+            player.OnHitted(ball);
             ResultData.lastHitHomePlayer = player;
         }
 
@@ -44,6 +48,8 @@ public class Ball : MonoBehaviour {
             Debug.Log("Goal");
             ResultData.resultCode = 0;
             UIManager.instance.DisplayResult();
+            EffectPooler.instance.SpawnEffect(Effect.Goal, collision.transform.position, Vector3.zero);
+            ball.velocity = Vector2.zero;
         }
         else if (collision.CompareTag("OutLine") && !isEnd)
         {
@@ -52,6 +58,7 @@ public class Ball : MonoBehaviour {
             Debug.Log("out");
             ResultData.resultCode = 1;
             UIManager.instance.DisplayResult();
+            ball.velocity = Vector2.zero;
         }
     }
 }

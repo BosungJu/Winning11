@@ -13,6 +13,7 @@ public class LobbyManager : MonoBehaviour {
 
     void Start() {
         SoundManager.instance.PlayBGM(Sound.Bgm);
+        SoundManager.instance.ChangeBounceVol(1);
     }
 
     #endregion
@@ -21,6 +22,7 @@ public class LobbyManager : MonoBehaviour {
 
     public void StartGame(string scene) {
         SceneChanger.instance.ChangeScene(scene);
+        SoundManager.instance.PlayOneShotThere(Sound.Button);
     }
 
     #endregion
