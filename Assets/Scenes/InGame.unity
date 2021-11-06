@@ -1126,6 +1126,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 715560812}
     m_Modifications:
+    - target: {fileID: 4985003770579508088, guid: af18ce28502abb844a16392c78774e82, type: 3}
+      propertyPath: m_Text
+      value: "\uC2DC\uAC04 \uCD08\uACFC"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985003770579508088, guid: af18ce28502abb844a16392c78774e82, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: f176e89b3906f3d46aa1593d0744f7a2, type: 3}
+    - target: {fileID: 4985003770579508088, guid: af18ce28502abb844a16392c78774e82, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985003770579508088, guid: af18ce28502abb844a16392c78774e82, type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4985003770624583244, guid: af18ce28502abb844a16392c78774e82, type: 3}
       propertyPath: m_Text
       value: MAIN
@@ -1224,6 +1240,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985003770670760179, guid: af18ce28502abb844a16392c78774e82, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985003771390883872, guid: af18ce28502abb844a16392c78774e82, type: 3}
+      propertyPath: m_Text
+      value: MVP
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985003771390883872, guid: af18ce28502abb844a16392c78774e82, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: f176e89b3906f3d46aa1593d0744f7a2, type: 3}
+    - target: {fileID: 4985003771390883872, guid: af18ce28502abb844a16392c78774e82, type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985003771899178950, guid: af18ce28502abb844a16392c78774e82, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: bd6baab7fba4c5c4595260a0c4fb2d24, type: 3}
+    - target: {fileID: 4985003771899178950, guid: af18ce28502abb844a16392c78774e82, type: 3}
+      propertyPath: m_FontData.m_FontStyle
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4985003772170894742, guid: af18ce28502abb844a16392c78774e82, type: 3}
