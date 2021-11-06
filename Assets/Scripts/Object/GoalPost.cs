@@ -24,7 +24,6 @@ public class GoalPost : Singleton<GoalPost>
     public void SetPost()
     {
         DiceGameData.blueDice = 6;
-        
         float pos = -(DiceGameData.blueDice / 2 + (DiceGameData.blueDice % 2 == 0 ? -0.5f : 0)) * width;
 
         Instantiate(leftPost, transform).transform.localPosition = new Vector3(pos - width, 0, 0);
@@ -39,4 +38,6 @@ public class GoalPost : Singleton<GoalPost>
         Instantiate(rightPost, transform).transform.localPosition = new Vector3(pos, 0, 0);
         rightEndPoint = pos;
     }
+
+
 }

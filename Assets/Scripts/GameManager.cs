@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public Action startGameEvent;
+    public CameraShake cameraShake;
 
     private void Awake()
     {
@@ -19,5 +20,11 @@ public class GameManager : Singleton<GameManager>
         startGameEvent();
     }
 
-    
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            cameraShake.Shake(Vector2.left);
+        }
+    }
 }
