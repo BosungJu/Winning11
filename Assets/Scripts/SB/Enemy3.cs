@@ -17,7 +17,7 @@ public class Enemy3 : EnemyBase {
     }
 
     void Start() {
-        goalDirection = (GoalPost.instance.transform.position - transform.position).normalized;
+        goalDirection = (-GoalPost.instance.transform.position - transform.position).normalized;
     }
 
     #endregion
