@@ -13,7 +13,7 @@ public class UIManager : Singleton<UIManager> {
     private Text timerText;
     [SerializeField]
     private GameObject pausePanel;
-    private Timer timer;
+    public Timer timer;
 
     [SerializeField]
     private GameObject resultPanel;
@@ -25,7 +25,8 @@ public class UIManager : Singleton<UIManager> {
     void Awake() {
         Time.timeScale = 1;
         timer = new Timer(timerText);
-        //GameManager.instance.startGameEvent += StartTimer;
+        GameManager.instance.endGameEvnent += DisplayResult;
+        timer.timeOutEvent += DisplayResult;
     }
 
     void Start() {
