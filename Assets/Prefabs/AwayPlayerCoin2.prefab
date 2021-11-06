@@ -51,9 +51,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5100939663456819755, guid: ab8eb1f6abd3ebe48b7f597d3a77d6ff, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 409e01a5cf5a40b4fa8dc3c0741ee061, type: 3}
     - target: {fileID: 5100939663456819756, guid: ab8eb1f6abd3ebe48b7f597d3a77d6ff, type: 3}
       propertyPath: m_Name
       value: AwayPlayerCoin2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100939663456819756, guid: ab8eb1f6abd3ebe48b7f597d3a77d6ff, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab8eb1f6abd3ebe48b7f597d3a77d6ff, type: 3}
