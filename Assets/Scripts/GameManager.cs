@@ -13,6 +13,10 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        StartGame();
+    }
 
     public void StartGame()
     {

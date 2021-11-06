@@ -7,13 +7,6 @@ public class Boll : MonoBehaviour {
     public Rigidbody2D boll;
     private Vector2 lastVel;
 
-    /// <summary>
-    /// 임시로 테스트용
-    /// </summary>
-    void Start() {
-        boll.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
-    }
-
     private void FixedUpdate() {
         lastVel = boll.velocity;
     }
