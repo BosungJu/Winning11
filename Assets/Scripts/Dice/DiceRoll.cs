@@ -22,6 +22,8 @@ public class DiceRoll : MonoBehaviour
     float delta = 17.0f; // 좌(우)로 이동가능한(x)최대값
     float speed = 8.0f; // 이동속도
 
+    bool m_delayBool;
+    float m_delay;
     private void Start()
     {
         m_text.text = "Tap to Roll Dice";
@@ -42,7 +44,13 @@ public class DiceRoll : MonoBehaviour
         }
         else if (CupUpMoveBool == true)
         {
-            CupUpMove();
+            m_delay += Time.deltaTime;
+
+            if (m_delay > 0.3f)
+            {
+                m_delayBool = true;
+                CupUpMove();
+            }
         }
     }
 
@@ -83,7 +91,7 @@ public class DiceRoll : MonoBehaviour
     private void MoveCupUp() {
         CupDownMoveBool = false;
         CupUpMoveBool = true;
-        m_NextScene = true;
+        //m_NextScene = true;
         SoundManager.instance.PlayOneShotThere(Sound.Button);
     }
 
@@ -92,10 +100,14 @@ public class DiceRoll : MonoBehaviour
     /// </summary>
     void CupUpMove()
     {
-        m_text.text = "";
-        m_Cup.transform.position = Vector3.MoveTowards(m_Cup.transform.position, targetUpPosition.transform.position, 20f);
+        Debug.Log("들어오녀ㅑ");
+        if (m_delayBool)
+        {
+            m_text.text = "";
+            m_Cup.transform.position = Vector3.MoveTowards(m_Cup.transform.position, targetUpPosition.transform.position, 60f);
 
-        viewDIce();
+            viewDIce();
+        }
     }
 
     /// <summary>
@@ -104,7 +116,7 @@ public class DiceRoll : MonoBehaviour
     void CupDownMove()
     {
         m_text.text = "";
-        m_Cup.transform.position = Vector3.MoveTowards(m_Cup.transform.position, targetDownPosition.transform.position, 20f);
+        m_Cup.transform.position = Vector3.MoveTowards(m_Cup.transform.position, targetDownPosition.transform.position, 60f);
     }
 
     /// <summary>
@@ -156,6 +168,9 @@ public class DiceRoll : MonoBehaviour
                 break;
         }
         m_text.text = "Let's Start!";
+
+        m_NextScene = true;
+        m_delayBool = false;
     }
 
     void CupMove()
