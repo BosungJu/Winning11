@@ -35,10 +35,6 @@ public class SoundManager : Singleton<SoundManager> {
     #region Main
 
     void Awake() {
-        if (GameObject.FindGameObjectsWithTag("SoundManager").Length > 1) {
-            Destroy(gameObject);
-            return;
-        }
         DontDestroyOnLoad(gameObject);
         foreach (SoundGroup sound in sounds) {
             soundDict[sound.name] = sound.clip;
