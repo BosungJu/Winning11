@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum Effect {
-    Kick, Bounce, Goal
+    Kick, Bounce, Goal, Win
 }
 
 public class EffectPooler : Singleton<EffectPooler> {
