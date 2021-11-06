@@ -2,27 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public abstract class EnemyBase : MonoBehaviour, IPlayer {
 
     #region Global Variables
 
-    protected Rigidbody2D rb;
-
-    #endregion
-
-    #region Init
-
-    protected void Init() {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    [Header("SETTINGS")]
+    [SerializeField]
+    protected float shootPwrMultiplier;
 
     #endregion
 
     #region Functions
 
-    public virtual void OnHitted(Rigidbody2D ball) {
-        //TODO
+    public void OnHitted(Rigidbody2D ball) {
+        float speed = GetSpeed(ball);
+        Vector3 direction = GetDirection(ball);
+        ball.velocity = Vector3.zero;
+        ball.transform.position = transform.position;
+        ball.AddForce(direction * speed, ForceMode2D.Impulse);
+    }
+
+    protected float GetSpeed(Rigidbody2D ball) {
+        return ball.velocity.magnitude * shootPwrMultiplier;
+    }
+
+    protected virtual Vector2 GetDirection(Rigidbody2D ball) {
+        return (transform.position - ball.transform.position).normalized;
     }
 
     #endregion
