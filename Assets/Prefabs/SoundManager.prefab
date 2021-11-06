@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 642487031}
   - component: {fileID: 642487032}
   m_Layer: 0
-  m_Name: AmbientAudioSource
+  m_Name: AimingAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ AudioSource:
   m_GameObject: {fileID: 642487030}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 720317389367914811, guid: bc74be362c3478f459e57f441c3beaa4, type: 2}
+  OutputAudioMixerGroup: {fileID: -9059155241204572109, guid: bc74be362c3478f459e57f441c3beaa4, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 1983663403}
   - component: {fileID: 1983663404}
   m_Layer: 0
-  m_Name: MusicAudioSource
+  m_Name: BGMAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -427,22 +427,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a244349a899155749af36c5bb012b88f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicAudioSource: {fileID: 1983663404}
-  ambientAudioSource: {fileID: 642487032}
+  bgmAudioSource: {fileID: 1983663404}
+  aimAudioSource: {fileID: 642487032}
   sfxAudioSource: {fileID: 750255166}
   sounds:
   - name: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 77adc423d6b7fd84d9aed4441e41a853, type: 3}
     volume: 1
   - name: 1
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 9bbe1f1c668ad494087f44ebe8060da2, type: 3}
     volume: 1
   - name: 2
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: c1fede8bc83216241b4ddb4eff29bf2a, type: 3}
     volume: 1
   - name: 3
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 865ca700e6098f243b8524d3c31891f2, type: 3}
     volume: 1
   - name: 4
+    clip: {fileID: 8300000, guid: c9e4ac86f8a04e64eb4125fd101a38b0, type: 3}
+    volume: 1
+  - name: 5
+    clip: {fileID: 8300000, guid: e4a638b6161ad764abacbabc473323e8, type: 3}
+    volume: 1
+  - name: 6
+    clip: {fileID: 8300000, guid: ad60910ff6b99d640a5f3af7e839b74e, type: 3}
+    volume: 1
+  - name: 7
     clip: {fileID: 0}
+    volume: 1
+  - name: 8
+    clip: {fileID: 8300000, guid: e87368c7b28372742a318b6007c998a8, type: 3}
+    volume: 1
+  - name: 9
+    clip: {fileID: 8300000, guid: 26179042c3f3e554b858a2cd2909590e, type: 3}
+    volume: 1
+  - name: 10
+    clip: {fileID: 8300000, guid: a86244424e3e99342acc782d61848d6a, type: 3}
+    volume: 1
+  - name: 11
+    clip: {fileID: 8300000, guid: 472ccd2f9f2d8f44da80bce81a972689, type: 3}
     volume: 1
