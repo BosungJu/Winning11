@@ -8,19 +8,13 @@ public class GameManager : Singleton<GameManager>
     public Action startGameEvent;
     public Action endGameEvnent;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
     private void Start()
     {
         StartGame();
     }
-
     public void StartGame()
     {
-        // TODO ½ÃÀÛ ¼³Á¤ ¹× ¾Æ±º ¼±¼ö ¹èÄ¡ ½ÃÀÛ.
+        // TODO ì‹œì‘ ì„¤ì • ë° ì•„êµ° ì„ ìˆ˜ ë°°ì¹˜ ì‹œì‘.
         startGameEvent();
     }
 
