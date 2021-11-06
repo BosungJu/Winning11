@@ -8,29 +8,36 @@ public class HomePlayer : MonoBehaviour, IPlayer // collider 는 trigger로
 {
     private bool isDrag;
     private string pName;
-    private void OnDragging(Vector3 pos)
+    private Vector2 clickOffset;
+    private Camera cam;
+
+    void Awake() {
+        cam = Camera.main;
+    }
+
+    private void OnDragging()
     {
         if (isDrag)
         {
-            pos.z = 10;
-            transform.position = Camera.main.ScreenToWorldPoint(pos);
+            transform.position = GetMouseWorldPos() + clickOffset;
         }
     }
 
     private void OnMouseDown()
     {
         isDrag = true;
-        OnDragging(Input.mousePosition);
+        clickOffset = (Vector2)transform.position - GetMouseWorldPos();
+        OnDragging();
     }
 
     private void OnMouseDrag()
     {
-        OnDragging(Input.mousePosition);
+        OnDragging();
     }
 
     private void OnMouseUp()
     {
-        OnDragging(Input.mousePosition);
+        OnDragging();
         isDrag = false;
     }
 
@@ -48,6 +55,12 @@ public class HomePlayer : MonoBehaviour, IPlayer // collider 는 trigger로
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         EffectPooler.instance.SpawnEffect(Effect.Kick, transform.position, new Vector3(0, 0, rotZ));
         SoundManager.instance.PlayOneShotThere(Sound.Player);
+    }
+
+    private Vector2 GetMouseWorldPos() {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = 10;
+        return cam.ScreenToWorldPoint(mousePos);
     }
 
     public string GetName()
