@@ -12,6 +12,7 @@ public class Timer {
     private TimeSpan timePlaying;
     private float elapsedTime;
     private bool timerGoing;
+    public Action timeOutEvent;
 
     #endregion
 
@@ -37,7 +38,7 @@ public class Timer {
     /// <summary>
     /// 게임 진행 시간 정지
     /// </summary>
-    public void EndTimer() {
+    public void StopTimer() {
         timerGoing = false;
     }
 
@@ -51,6 +52,13 @@ public class Timer {
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
             string timePlayingStr = "시간: " + timePlaying.ToString("mm':'ss'.'ff");
             timerText.text = timePlayingStr;
+            
+            if (timePlaying.TotalSeconds > 11)
+            {
+                ResultData.resultCode = 2;
+                timeOutEvent();
+            }
+
             yield return null;
         }
         yield break;

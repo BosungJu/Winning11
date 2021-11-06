@@ -3,25 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy1 : EnemyBase {
-
-    #region Main
-
-    void Start() {
-        Init();
+    private void Awake()
+    {
+        level = 1;
     }
-
-    void Update() {
-
-    }
-
-    #endregion
-
-    #region Functions
-
-    public override void OnHitted(Rigidbody2D ball) {
-        base.OnHitted(ball);
-        //TODO
-    }
-
-    #endregion
 }

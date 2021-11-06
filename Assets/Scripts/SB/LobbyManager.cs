@@ -15,16 +15,8 @@ public class LobbyManager : MonoBehaviour {
 
     #region Functions
 
-    public void LoadScene(int scene) {
-        StartCoroutine(LoadSceneRoutine());
-    }
-
-    private IEnumerator LoadSceneRoutine() {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(1);
-        while (!asyncLoad.isDone) {
-            yield return null;
-        }
-        yield break;
+    public void StartGame(string scene) {
+        SceneChanger.instance.ChangeScene(scene);
     }
 
     #endregion

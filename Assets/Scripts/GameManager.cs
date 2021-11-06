@@ -6,12 +6,17 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public Action startGameEvent;
+    public Action endGameEvnent;
 
     private void Awake()
     {
-
+        DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        StartGame();
+    }
 
     public void StartGame()
     {
@@ -19,5 +24,8 @@ public class GameManager : Singleton<GameManager>
         startGameEvent();
     }
 
-    
+    private void FixedUpdate()
+    {
+        
+    }
 }
