@@ -19,6 +19,10 @@ public class Enemy3 : EnemyBase {
     #endregion
 
     #region Functions
+    private void Awake()
+    {
+        level = 3;
+    }
 
     protected override Vector2 GetDirection(Rigidbody2D ball) {
         return goalDirection;
