@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraShake : MonoBehaviour
+public class CameraShake : Singleton<CameraShake>
 {
     public Transform cam;
     private Coroutine routine;
-    private Vector3 origin = new Vector3(0,0,-10);
+    private Vector3 origin = new Vector3(0, 0, -10);
 
     private IEnumerator ShakeCamera(Vector2 direction)
     {

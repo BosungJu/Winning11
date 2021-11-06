@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(CircleCollider2D))]
 public class HomePlayer : MonoBehaviour, IPlayer // collider 는 trigger로
 {
+    string pName;
     private bool isDrag;
 
     private void OnDragging(Vector3 pos)
@@ -43,5 +44,10 @@ public class HomePlayer : MonoBehaviour, IPlayer // collider 는 trigger로
         Vector2 direction = new Vector3(Random.Range(left, right), GoalPost.instance.transform.position.y, 0) - transform.position;
         boll.position = transform.position;
         boll.velocity = direction.normalized * scala;
+    }
+
+    public string GetName()
+    {
+        return pName;
     }
 }

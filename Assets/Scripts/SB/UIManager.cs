@@ -15,6 +15,9 @@ public class UIManager : Singleton<UIManager> {
     private GameObject pausePanel;
     private Timer timer;
 
+    [SerializeField]
+    private GameObject resultPanel;
+
     #endregion
 
     #region Main
@@ -29,6 +32,12 @@ public class UIManager : Singleton<UIManager> {
         if (pausePanel.activeSelf) {
             pausePanel.SetActive(false);
         }
+
+        if (resultPanel.activeSelf)
+        {
+            resultPanel.SetActive(false);
+        }
+
         StartTimer();
     }
 
@@ -51,6 +60,13 @@ public class UIManager : Singleton<UIManager> {
         pausePanel.SetActive(false);
         Time.timeScale = 1;
         StartCoroutine(timer.StartTimerRoutine());
+    }
+
+    public void DisplayResult()
+    {
+        timer.StopTimer();
+        Time.timeScale = 0;
+        resultPanel.SetActive(true);
     }
 
     #endregion
