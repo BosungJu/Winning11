@@ -29,22 +29,17 @@ public class Slinger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
     private void OnDragging(Vector2 vec)
     {
         Vector2 startWorldPos = startRange.position;
-        Vector2 endWorldPos = cam.ScreenToWorldPoint(vec);
-        Vector2 direction = endWorldPos - startWorldPos;
+        Vector2 direction = (Vector2)cam.ScreenToWorldPoint(vec) - startWorldPos;
         direction = Vector2.ClampMagnitude(direction, maxSize);
         slingerPoint.position = startWorldPos + direction;
         float distance = slingerPoint.anchoredPosition.magnitude;
         float rangeSize = distance * 2 + startSizeOffset;
         if (rangeSize < 0.8f)
-        {
             rangeSize = 0.8f;
-        }
         startRange.sizeDelta = new Vector2(rangeSize, rangeSize);
-        float arrowSize = distance / 2.5f + 0.14f;
+        float arrowSize = distance / 2.4f + 0.13f;
         if (arrowSize < 0.175f)
-        {
             arrowSize = 0.175f;
-        }
         arrow.localScale = new Vector2(1, arrowSize);
         arrow.eulerAngles = new Vector3(0, 0, GetAngle(direction));
     }
@@ -67,8 +62,7 @@ public class Slinger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
         startRange.sizeDelta = new Vector2(startSizeOffset, startSizeOffset);
         ballCollider.enabled = true;
         gameObject.SetActive(false);
-        Vector2 screenToWorldPosition = startRange.position;
-        EffectPooler.instance.SpawnEffect(Effect.Kick, screenToWorldPosition, new Vector3(0, 0, GetAngle(vec)));
+        EffectPooler.instance.SpawnEffect(Effect.Kick, startRange.position, new Vector3(0, 0, GetAngle(vec)));
         SoundManager.instance.StopAiming();
         SoundManager.instance.PlayOneShotThere(Sound.Shoot);
     }
