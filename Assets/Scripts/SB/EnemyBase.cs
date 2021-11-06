@@ -9,6 +9,8 @@ public abstract class EnemyBase : MonoBehaviour, IPlayer {
     [Header("SETTINGS")]
     [SerializeField]
     protected float shootPwrMultiplier;
+    [SerializeField]
+    protected float maxSpeed;
     public int level { get; protected set; }
     private string pName;
 
@@ -28,7 +30,11 @@ public abstract class EnemyBase : MonoBehaviour, IPlayer {
     }
 
     protected float GetSpeed(Rigidbody2D ball) {
-        return ball.velocity.magnitude * shootPwrMultiplier;
+        float speed = ball.velocity.magnitude * shootPwrMultiplier;
+        if (speed > maxSpeed) {
+            speed = maxSpeed;
+        }
+        return speed;
     }
 
     protected virtual Vector2 GetDirection(Rigidbody2D ball) {
