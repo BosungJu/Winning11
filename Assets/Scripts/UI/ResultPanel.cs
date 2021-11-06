@@ -26,8 +26,8 @@ public class ResultPanel : MonoBehaviour
     private void OnEnable()
     {
         resultText.text = resultTexts[ResultData.resultCode];
-        bestPlayerName.text = ResultData.resultCode == 0 ? ResultData.lastHitHomePlayer : ResultData.lastHitAwayPlayer;
-        bestPlayerImage.sprite = Resources.Load<Sprite>(@"Images\" + (ResultData.resultCode == 0 ? "HomePlayer" : "AwayPlayerCoin"));
+        bestPlayerName.text = ResultData.resultCode == 0 ? ResultData.lastHitHomePlayer.GetName() : ResultData.lastHitAwayPlayer.GetName();
+        bestPlayerImage.sprite = Resources.Load<Sprite>(@"Images\" + (ResultData.resultCode == 0 ? "HomePlayer" : "AwayPlayerL" + ResultData.lastHitAwayPlayer.level + "Face"));
         // TODO image update
     }
 }

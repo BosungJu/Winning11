@@ -9,7 +9,7 @@ public abstract class EnemyBase : MonoBehaviour, IPlayer {
     [Header("SETTINGS")]
     [SerializeField]
     protected float shootPwrMultiplier;
-
+    public int level { get; protected set; }
     private string pName;
 
     #endregion
