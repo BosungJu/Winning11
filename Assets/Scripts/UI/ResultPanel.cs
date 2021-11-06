@@ -12,7 +12,25 @@ public class ResultPanel : MonoBehaviour
     public Text bestPlayerName;
     public Button mainBtn;
 
-    private string[] resultTexts = { "Goal", "선넘음", "시간 땡"};
+    private string[] resultTexts = { "승리", "라인 아웃", "시간 초과"};
+
+    private string[,] playerNames = 
+    {
+        { 
+            "Cervantes", "Michael Jordan", "Yuna Kim", 
+            "Chan Ho Park", "John Cena", "Michael Schumacher",
+            "Peter Sagan", "Bob Ross", "and You"},
+        {
+            "Shandon Baptiste", "Richelor Sprangers", "Ethan Pinnock",
+            "Ryan Trotman", "Wes Morgan", "Alphonso Davies",
+            "Tomas Romero", "Mahlon Romeo", "and me"
+        },
+        {
+            "유수연", "민준홍", "고준열",
+            "주보성", "전완익", "한승범",
+            "한국콘텐츠진흥원", "순천향대학교", "and us"
+        }
+    };
 
     private void ChangeLobby()
     {
@@ -29,39 +47,26 @@ public class ResultPanel : MonoBehaviour
     {
         resultText.text = resultTexts[ResultData.resultCode];
 
+        bestPlayerName.text = playerNames[ResultData.resultCode, UnityEngine.Random.Range(0, 9)];
+        SoundManager.instance.PlayOneShotThere(ResultData.resultCode == 0 ? Sound.Win : Sound.Fail);
+
         if (ResultData.resultCode == 0)
         {
-            if (ResultData.lastHitHomePlayer != null) 
-            {
-                bestPlayerName.text = ResultData.lastHitHomePlayer.GetName();
-            }
-            else
-            {
-                bestPlayerName.text = "내가 쵝오";
-            }
-            SoundManager.instance.PlayOneShotThere(Sound.Win);
+            bestPlayerImage.sprite = Resources.Load<Sprite>(@"Images\HomePlayer");
         }
         else
         {
             if (ResultData.lastHitAwayPlayer != null)
             {
-                bestPlayerName.text = ResultData.lastHitAwayPlayer.GetName();
+                bestPlayerImage.sprite = Resources.Load<Sprite>(@"Images\AwayPlayerL" +
+                    ResultData.lastHitAwayPlayer.level.ToString() + "Face");
+                Debug.Log(ResultData.lastHitAwayPlayer.level);
             }
             else
             {
-                bestPlayerName.text = "아 머해";
+                bestPlayerImage.sprite = Resources.Load<Sprite>(@"Images\AwayPlayerL" +
+                    UnityEngine.Random.Range(1,4) + "Face");
             }
-            SoundManager.instance.PlayOneShotThere(Sound.Fail);
-        }
-
-        try
-        {
-            bestPlayerImage.sprite = Resources.Load<Sprite>(@"Images\" + (ResultData.resultCode == 0 ? "HomePlayer" : "AwayPlayerL" + ResultData.lastHitAwayPlayer.level + "Face"));
-            // TODO image update
-        }
-        catch (Exception ex)
-        {
-            bestPlayerImage.sprite = null;
         }
     }
 }
