@@ -13,7 +13,7 @@ public class GoalPost : Singleton<GoalPost>
     public GameObject rightPost;
     public GameObject centerPost;
 
-    public void SetPost(int n)
+    public void SetPost()
     {
         float width = centerPost.transform.localScale.x;
         float pos = n / 2 + (n % 2 == 0 ? 0.5f : 0);
