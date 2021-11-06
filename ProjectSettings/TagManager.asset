@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - OutLine
+  - GoalPost
+  - Enemy
+  - Home
   layers:
   - Default
   - TransparentFX
