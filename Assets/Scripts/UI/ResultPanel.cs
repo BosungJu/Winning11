@@ -49,6 +49,7 @@ public class ResultPanel : MonoBehaviour
 
         bestPlayerName.text = playerNames[ResultData.resultCode, UnityEngine.Random.Range(0, 9)];
         SoundManager.instance.PlayOneShotThere(ResultData.resultCode == 0 ? Sound.Win : Sound.Fail);
+        SoundManager.instance.ChangeBounceVol(0.2f);
 
         if (ResultData.resultCode == 0)
         {
