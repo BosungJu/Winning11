@@ -9,6 +9,7 @@ TagManager:
   - GoalPost
   - Enemy
   - Home
+  - SoundManager
   layers:
   - Default
   - TransparentFX
