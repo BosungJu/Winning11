@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
-{
-    public Transform spawnPoints;
+{ 
     private List<int> points = new List<int>();
-    public Transform awayParent;
     private int[,] difficultList = new int[6, 3] 
     { 
         { 6, 0, 0 }, { 4, 2, 0 }, { 3, 3, 0 },
         { 3, 2, 1 }, { 2, 3, 1 }, { 2, 2, 2 } 
     };
+
+    public Transform spawnPoints;
+    public Transform awayParent;
+    public List<GameObject> awayObjs; // 인스펙터에서 넣어주기.
 
     private void SpawnAwayPlayer(int grade)
     {
@@ -20,15 +22,7 @@ public class PlayerManager : MonoBehaviour
         
         points.RemoveAt(index);
 
-        switch (grade) // instantiate set parent >> awayParent
-        {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-        }
+        Instantiate(awayObjs[grade], awayParent).transform.position = pos;
     }
 
     private void SpawnPlayer()
@@ -39,7 +33,7 @@ public class PlayerManager : MonoBehaviour
             points.Add(i);
         }
 
-        int difficult = 0;
+        int difficult = DiceGameData.redDice;
 
         for (int i = 0; i < 3; ++i)
         {
@@ -54,17 +48,4 @@ public class PlayerManager : MonoBehaviour
     {
         GameManager.instance.startGameEvent += SpawnPlayer;
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 }

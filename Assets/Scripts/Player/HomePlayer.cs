@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(CircleCollider2D))]
 public class HomePlayer : MonoBehaviour, IPlayer // collider ´Â trigger·Î
 {
     private bool isDrag;
