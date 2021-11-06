@@ -23,6 +23,9 @@ public class Slinger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
 
     private void OnDragging(Vector2 vec)
     {
+        float size = 1080f / Screen.width;
+        Debug.Log("width: " + Screen.width);
+
         Vector3 pos = startRange.position;
 
         Vector2 direction = vec - (Vector2)pos;
