@@ -55,6 +55,7 @@ public class DiceRoll : MonoBehaviour
 
         if (m_NextScene == true)
         {
+            // ∞‘¿” Ω√¿€ æ¿
             SceneManager.LoadScene("bsTest");
         }
 
