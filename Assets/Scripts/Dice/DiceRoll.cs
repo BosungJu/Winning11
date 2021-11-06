@@ -18,6 +18,9 @@ public class DiceRoll : MonoBehaviour
     bool m_NextScene = false;
     public bool CupDownMoveBool = false;   // 내려갈 때
     bool CupUpMoveBool = false;     // 올라갈 때
+    private bool isClickDisabled;
+    private bool canPlaySound;
+    private bool isSceneDone;
 
     float delta = 17.0f; // 좌(우)로 이동가능한(x)최대값
     float speed = 8.0f; // 이동속도
@@ -44,6 +47,7 @@ public class DiceRoll : MonoBehaviour
                 if(m_delay < 0.1f || m_delay > 3f)
                 {
                     CupMove();
+                    isClickDisabled = false;
                 }
             }
         }
@@ -55,6 +59,7 @@ public class DiceRoll : MonoBehaviour
             {
                 m_delayBool = true;
                 CupUpMove();
+                isClickDisabled = false;
             }
         }
     }
@@ -64,27 +69,27 @@ public class DiceRoll : MonoBehaviour
     /// </summary>
     public void OnButtonClick()
     {
-        if (m_NextScene == true) {
-            // 게임 시작 씬
-            //SceneManager.LoadScene("bsTest");
+        if (!isClickDisabled && !isSceneDone) {
             SoundManager.instance.PlayOneShotThere(Sound.Button);
-            SceneChanger.instance.ChangeScene("InGame");
-            return;
-        }
+            isClickDisabled = true;
+            if (m_NextScene == true) {
+                // 게임 시작 씬
+                //SceneManager.LoadScene("bsTest");
+                SceneChanger.instance.ChangeScene("InGame");
+                isSceneDone = true;
+                return;
+            }
+            
+            DiceGameData.RollDice();    // 주사위 숫자 정하기.
 
-        DiceGameData.RollDice();    // 주사위 숫자 정하기.
-
-        if (CupDownMoveBool == false)
-        {
-            MoveCupDown();
-        }
-        else if(CupUpMoveBool == false && CupDownMoveBool == true)
-        {
-            MoveCupUp();
+            if (CupDownMoveBool == false) {
+                MoveCupDown();
+            }
+            else if (CupUpMoveBool == false && CupDownMoveBool == true) {
+                MoveCupUp();
+            }
         }
     }
-
-    private bool canPlaySound;
 
     private void MoveCupDown() {
         CupDownMoveBool = true;
