@@ -28,20 +28,21 @@ public class Slinger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
 
     private void OnDragging(Vector2 vec)
     {
-        float size = 1080f / Screen.width;
-        Debug.Log("width: " + Screen.width);
+        //float size = 1080f / Screen.width;
+        //Debug.Log("width: " + Screen.width);
 
-        Vector3 pos = startRange.position;
+        //Vector3 pos = startRange.position;
 
-        Vector2 direction = vec - (Vector2)pos;
-        direction = Vector2.ClampMagnitude(direction, range / 2);
-        slingerPoint.localPosition = direction;
-        float distance = slingerPoint.localPosition.sqrMagnitude / Mathf.Pow(range, 2);
+        //Vector2 direction = vec - (Vector2)pos;
+        //direction = Vector2.ClampMagnitude(direction, range / 2);
+        //slingerPoint.localPosition = direction;
+        //float distance = slingerPoint.localPosition.sqrMagnitude / Mathf.Pow(range, 2);
 
-        startRange.sizeDelta = new Vector2(Mathf.Clamp(distance * 3000, 140, range + 140), Mathf.Clamp(distance * 3000, 140, range + 140));
+        //startRange.sizeDelta = new Vector2(Mathf.Clamp(distance * 3000, 140, range + 140), Mathf.Clamp(distance * 3000, 140, range + 140));
 
         // Arrow
-        arrow.sizeDelta = new Vector2(100, distance * 1500);
+        //arrow.sizeDelta = new Vector2(100, distance * 1500);
+
         Vector2 startWorldPos = startRange.position;
         Vector2 direction = (Vector2)cam.ScreenToWorldPoint(vec) - startWorldPos;
         direction = Vector2.ClampMagnitude(direction, maxSize);
