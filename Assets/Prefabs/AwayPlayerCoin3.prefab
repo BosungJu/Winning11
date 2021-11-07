@@ -91,4 +91,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPwrMultiplier: 2
-  maxSpeed: 48
+  maxSpeed: 24

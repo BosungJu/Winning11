@@ -12,7 +12,7 @@ public class ResultPanel : MonoBehaviour
     public Text bestPlayerName;
     public Button mainBtn;
 
-    private string[] resultTexts = { "승리", "라인 아웃", "시간 초과"};
+    private string[] resultTexts = { "Victory!", "Out!", "Time's Up!"};
 
     private string[,] playerNames = 
     {
