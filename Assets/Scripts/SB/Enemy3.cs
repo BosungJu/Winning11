@@ -6,7 +6,9 @@ public class Enemy3 : EnemyBase {
 
     #region Global Variables
 
-    private Vector2 goalDirection;
+    private float left;
+    private float right;
+    private float y;
 
     #endregion
 
@@ -17,7 +19,9 @@ public class Enemy3 : EnemyBase {
     }
 
     void Start() {
-        goalDirection = (-GoalPost.instance.transform.position - transform.position).normalized;
+        left = GoalPost.instance.leftEndPoint;
+        right = GoalPost.instance.rightEndPoint;
+        y = -GoalPost.instance.transform.position.y;
     }
 
     #endregion
@@ -30,7 +34,8 @@ public class Enemy3 : EnemyBase {
     }
 
     protected override Vector2 GetDirection(Rigidbody2D ball) {
-        return goalDirection;
+        Vector2 direction = new Vector3(Random.Range(left, right), y, 0) - transform.position;
+        return direction.normalized;
     }
 
     #endregion
