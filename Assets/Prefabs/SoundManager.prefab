@@ -442,19 +442,19 @@ MonoBehaviour:
     volume: 0.5
   - name: 3
     clip: {fileID: 8300000, guid: 865ca700e6098f243b8524d3c31891f2, type: 3}
-    volume: 0.7
+    volume: 0.6
   - name: 4
     clip: {fileID: 8300000, guid: c9e4ac86f8a04e64eb4125fd101a38b0, type: 3}
-    volume: 0.7
+    volume: 0.6
   - name: 5
     clip: {fileID: 8300000, guid: e4a638b6161ad764abacbabc473323e8, type: 3}
-    volume: 0.7
+    volume: 0.6
   - name: 6
     clip: {fileID: 8300000, guid: ad60910ff6b99d640a5f3af7e839b74e, type: 3}
-    volume: 0.7
+    volume: 0.6
   - name: 7
     clip: {fileID: 8300000, guid: c933e643de192874e9d9a80fa8b99963, type: 3}
-    volume: 0.7
+    volume: 0.6
   - name: 8
     clip: {fileID: 8300000, guid: e87368c7b28372742a318b6007c998a8, type: 3}
     volume: 0.6

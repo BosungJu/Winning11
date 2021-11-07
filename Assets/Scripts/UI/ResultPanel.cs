@@ -51,7 +51,7 @@ public class ResultPanel : MonoBehaviour
         bestPlayerName.text = playerNames[result, UnityEngine.Random.Range(0, 9)];
 
         SoundManager.instance.PlayOneShotThere(result == 0 ? Sound.Win : Sound.Fail);
-        SoundManager.instance.ChangeBounceVol(0.2f);
+        SoundManager.instance.ChangeBounceVol(0.1f);
         if (result == 0) {
             EffectPooler.instance.SpawnEffect(Effect.Win, Vector2.zero, Vector3.zero);
         }
