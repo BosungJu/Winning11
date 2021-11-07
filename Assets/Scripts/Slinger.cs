@@ -10,15 +10,20 @@ public class Slinger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
     public Rigidbody2D m_Ball;
     public RectTransform startRange;
     public RectTransform slingerPoint;
-
     public RectTransform arrow;
+    private Camera cam;
+    private float maxSize = 1.4f;
+    private float startSizeOffset;
 
-    bool isDrag;
-    float range = 600;
+    void Start()
+    {
+        cam = Camera.main;
+        startSizeOffset = slingerPoint.sizeDelta.x;
+    }
 
     private float GetAngle(Vector2 direction)
     {
-        return Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90;
+        return Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
     }
 
     private void OnDragging(Vector2 vec)
@@ -37,12 +42,24 @@ public class Slinger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
 
         // Arrow
         arrow.sizeDelta = new Vector2(100, distance * 1500);
+        Vector2 startWorldPos = startRange.position;
+        Vector2 direction = (Vector2)cam.ScreenToWorldPoint(vec) - startWorldPos;
+        direction = Vector2.ClampMagnitude(direction, maxSize);
+        slingerPoint.position = startWorldPos + direction;
+        float distance = slingerPoint.anchoredPosition.magnitude;
+        float rangeSize = distance * 2 + startSizeOffset;
+        if (rangeSize < 0.8f)
+            rangeSize = 0.8f;
+        startRange.sizeDelta = new Vector2(rangeSize, rangeSize);
+        float arrowSize = distance / 2.4f + 0.13f;
+        if (arrowSize < 0.175f)
+            arrowSize = 0.175f;
+        arrow.localScale = new Vector2(1, arrowSize);
         arrow.eulerAngles = new Vector3(0, 0, GetAngle(direction));
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        isDrag = true;
         SoundManager.instance.PlayAiming();
     }
 
@@ -53,17 +70,13 @@ public class Slinger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        isDrag = false;
-        Vector3 vec = startRange.position - (Vector3)eventData.position;
+        Vector2 vec = startRange.position - cam.ScreenToWorldPoint(eventData.position);
         m_Ball.AddForce(vec.normalized * 300f);
         slingerPoint.position = startRange.position;
-        startRange.sizeDelta = new Vector2(140, 140);
+        startRange.sizeDelta = new Vector2(startSizeOffset, startSizeOffset);
         ballCollider.enabled = true;
-        arrow.gameObject.SetActive(false);
-        float rotZ = Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg - 90f;
-        RectTransform rectTransform = GetComponent<RectTransform>();
-        Vector2 screenToWorldPosition = Camera.main.ScreenToWorldPoint(rectTransform.transform.position);
-        EffectPooler.instance.SpawnEffect(Effect.Kick, screenToWorldPosition, new Vector3(0, 0, rotZ));
+        gameObject.SetActive(false);
+        EffectPooler.instance.SpawnEffect(Effect.Kick, startRange.position, new Vector3(0, 0, GetAngle(vec)));
         SoundManager.instance.StopAiming();
         SoundManager.instance.PlayOneShotThere(Sound.Shoot);
     }
