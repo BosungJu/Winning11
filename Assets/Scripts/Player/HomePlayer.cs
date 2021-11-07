@@ -7,17 +7,19 @@ using UnityEngine.EventSystems;
 public class HomePlayer : MonoBehaviour, IPlayer // collider ´Â trigger·Î
 {
     private bool isDrag;
+    public static bool isShooting;
     private string pName;
     private Vector2 clickOffset;
     private Camera cam;
 
     void Awake() {
         cam = Camera.main;
+        isShooting = false;
     }
 
     private void OnDragging()
     {
-        if (isDrag)
+        if (isDrag && !isShooting)
         {
             transform.position = GetMouseWorldPos() + clickOffset;
         }
