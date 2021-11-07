@@ -80,5 +80,6 @@ public class Slinger : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
         EffectPooler.instance.SpawnEffect(Effect.Kick, startRange.position, new Vector3(0, 0, GetAngle(vec)));
         SoundManager.instance.StopAiming();
         SoundManager.instance.PlayOneShotThere(Sound.Shoot);
+        HomePlayer.isShooting = true;
     }
 }
