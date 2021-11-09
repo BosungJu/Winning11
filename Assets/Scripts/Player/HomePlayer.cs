@@ -57,6 +57,9 @@ public class HomePlayer : MonoBehaviour, IPlayer // collider ´Â trigger·Î
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         EffectPooler.instance.SpawnEffect(Effect.Kick, transform.position, new Vector3(0, 0, rotZ));
         SoundManager.instance.PlayOneShotThere(Sound.Player);
+        
+        if (!GameManager.instance.isEndGame)
+            Vibration.CreateOneShot(50);
     }
 
     private Vector2 GetMouseWorldPos() {

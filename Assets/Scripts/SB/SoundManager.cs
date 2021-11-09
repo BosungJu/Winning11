@@ -123,6 +123,21 @@ public class SoundManager : Singleton<SoundManager> {
         volDict[Sound.Wall] = volume;
     }
 
+    public void ChangeBGMVolume(float volume)
+    {
+        volDict[Sound.Bgm] = volume;
+        bgmAudioSource.volume = volume;
+    }
+
+    public void ChangeAllVolume(float volume) 
+    { 
+        foreach (Sound e in typeof(Sound).GetEnumValues())
+        {
+            volDict[e] = volume;
+        }
+    }
+
+
     /// <summary>
     /// Get aimAudioSource
     /// </summary>

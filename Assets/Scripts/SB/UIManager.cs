@@ -26,7 +26,7 @@ public class UIManager : Singleton<UIManager> {
         Time.timeScale = 1;
         timer = new Timer(timerText);
         GameManager.instance.endGameEvnent += DisplayResult;
-        timer.timeOutEvent += DisplayResult;
+        timer.timeOutEvent += () => { GameManager.instance.endGameEvnent(); };
     }
 
     void Start() {

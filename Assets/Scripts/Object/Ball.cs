@@ -47,7 +47,7 @@ public class Ball : MonoBehaviour {
             // clear
             Debug.Log("Goal");
             ResultData.resultCode = 0;
-            UIManager.instance.DisplayResult();
+            GameManager.instance.endGameEvnent();
             EffectPooler.instance.SpawnEffect(Effect.Goal, collision.transform.position, Vector3.zero);
             ball.velocity = Vector2.zero;
         }
@@ -57,7 +57,7 @@ public class Ball : MonoBehaviour {
             isEnd = true;
             Debug.Log("out");
             ResultData.resultCode = 1;
-            UIManager.instance.DisplayResult();
+            GameManager.instance.endGameEvnent();
             ball.velocity = Vector2.zero;
         }
     }
