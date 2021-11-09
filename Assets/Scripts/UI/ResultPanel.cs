@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ public class ResultPanel : MonoBehaviour
     public Image bestPlayerImage;
     public Text bestPlayerName;
     public Button mainBtn;
+
+    private float vol;
 
     private string[] resultTexts = { "Victory!", "Out!", "Time's Up!"};
 
@@ -34,8 +37,9 @@ public class ResultPanel : MonoBehaviour
 
     private void ChangeLobby()
     {
-        SceneChanger.instance.ChangeScene("Lobby");
+        SoundManager.instance.ChangeBounceVol(vol);
         SoundManager.instance.PlayOneShotThere(Sound.Button);
+        SceneChanger.instance.ChangeScene("Lobby");
     }
 
     private void Awake()
@@ -51,7 +55,9 @@ public class ResultPanel : MonoBehaviour
         bestPlayerName.text = playerNames[result, UnityEngine.Random.Range(0, 9)];
 
         SoundManager.instance.PlayOneShotThere(result == 0 ? Sound.Win : Sound.Fail);
-        SoundManager.instance.ChangeBounceVol(0.1f);
+        vol = SoundManager.instance.volDict.Values.Select(x => x).ToList()[0];
+
+        SoundManager.instance.ChangeBounceVol(vol * 0.1f);
         if (result == 0) {
             EffectPooler.instance.SpawnEffect(Effect.Win, Vector2.zero, Vector3.zero);
         }
@@ -74,5 +80,10 @@ public class ResultPanel : MonoBehaviour
                     UnityEngine.Random.Range(1,4) + "Face");
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        
     }
 }

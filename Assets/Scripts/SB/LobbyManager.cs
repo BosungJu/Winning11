@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LobbyManager : MonoBehaviour {
 
     public GameObject popUp;
+    public GameObject setting;
     public GameObject logo;
     public GameObject particleObj;
 
@@ -17,7 +18,7 @@ public class LobbyManager : MonoBehaviour {
 
     void Start() {
         SoundManager.instance.PlayBGM(Sound.Bgm);
-        SoundManager.instance.ChangeBounceVol(0.6f);
+        //SoundManager.instance.ChangeBounceVol(0.6f);
     }
 
     #endregion
@@ -34,6 +35,22 @@ public class LobbyManager : MonoBehaviour {
         popUp.SetActive(true);
         logo.SetActive(false);
         particleObj.SetActive(false);
+    }
+
+    public void DisplaySetting()
+    {
+        if (!setting.activeSelf)
+        {
+            setting.SetActive(true);
+            logo.SetActive(false);
+            particleObj.SetActive(false);
+        }
+        else
+        {
+            setting.SetActive(false);
+            logo.SetActive(true);
+            particleObj.SetActive(true);
+        }
     }
 
     #endregion
