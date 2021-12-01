@@ -156,10 +156,10 @@ RectTransform:
   m_Father: {fileID: 323785333}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: -100}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchoredPosition: {x: 450, y: 870}
+  m_SizeDelta: {x: -930, y: -1770}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &71728230
 MonoBehaviour:
@@ -734,6 +734,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 661975161}
   vibration: {fileID: 2216554861359441918}
+  settingButtonImage: {fileID: 71728231}
+  goSettingImage: {fileID: 3543179098846786247, guid: eda991d30bb6468438cbcbd641d98085, type: 3}
+  closeSettingImage: {fileID: 5037684589655237018, guid: c866d3ee422775547b18c7c9f48ba7f1, type: 3}
 --- !u!1 &906672787
 GameObject:
   m_ObjectHideFlags: 0
@@ -6331,6 +6334,22 @@ PrefabInstance:
     - target: {fileID: 2216554862116335951, guid: bb664e82eb3552742851abd8be7f0647, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998167015099999863, guid: bb664e82eb3552742851abd8be7f0647, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998167015099999863, guid: bb664e82eb3552742851abd8be7f0647, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998167015099999863, guid: bb664e82eb3552742851abd8be7f0647, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998167015099999863, guid: bb664e82eb3552742851abd8be7f0647, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb664e82eb3552742851abd8be7f0647, type: 3}

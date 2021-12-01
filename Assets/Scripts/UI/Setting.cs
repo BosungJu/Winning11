@@ -7,6 +7,10 @@ public class Setting : MonoBehaviour
 {
     public Slider sound;
     public OnOffButton vibration;
+    public Image settingButtonImage;
+
+    public Image goSettingImage;
+    public Image closeSettingImage;
 
     private static float volume = 0.6f;
     private static bool isOn = true;
@@ -28,5 +32,15 @@ public class Setting : MonoBehaviour
         sound.value = volume;
         vibration.isOn = isOn;
         vibration.SetButtonImage();
+    }
+
+    private void OnEnable()
+    {
+        settingButtonImage.sprite = closeSettingImage.sprite;
+    }
+
+    private void OnDisable()
+    {
+        settingButtonImage.sprite = goSettingImage.sprite;
     }
 }

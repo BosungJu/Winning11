@@ -10,7 +10,7 @@ public class Vibration : MonoBehaviour
     public static AndroidJavaClass vibrationEffectClass;
     public static int defaultAmplitude;
     public static bool isOn;
-    public static float remainingTime = 0;
+    public static long remainingTime = 0;
 
     /*
      * "CreateOneShot": One time vibration
@@ -37,26 +37,13 @@ public class Vibration : MonoBehaviour
 #endif
     }
 
-    private void Update()
-    {
-        if (remainingTime > 0)
-        {
-            remainingTime -= Time.deltaTime * 1000;
-        }
-        else if (remainingTime < 0)
-        {
-            remainingTime = 0;
-        }
-    }
-
     //Works on API > 25
     public static void CreateOneShot(long milliseconds)
     {
-        if (!isOn || remainingTime > 0)
+        if (!isOn || remainingTime)
         {
             return;
         }
-
         remainingTime = milliseconds;
 #if UNITY_ANDROID && !UNITY_EDITOR
         //If Android 8.0 (API 26+) or never use the new vibrationeffects
@@ -75,8 +62,12 @@ public class Vibration : MonoBehaviour
 #endif
     }
 
-    private static void CreateOneShot(long milliseconds, int amplitude)
+    public static void CreateOneShot(long milliseconds, int amplitude)
     {
+        if (!isOn)
+        {
+            return;
+        }
 #if UNITY_ANDROID && !UNITY_EDITOR
         //If Android 8.0 (API 26+) or never use the new vibrationeffects
         if (getSDKInt() >= 26)
@@ -98,12 +89,10 @@ public class Vibration : MonoBehaviour
     public static void CreateWaveform(long[] timings, int repeat)
     {
         //Amplitude array varies between no vibration and default_vibration up to the number of timings
-        if (!isOn || remainingTime > 0)
+        if (!isOn)
         {
             return;
         }
-
-        remainingTime = timings.Length * repeat;
 #if UNITY_ANDROID && !UNITY_EDITOR
         //If Android 8.0 (API 26+) or never use the new vibrationeffects
         if (getSDKInt() >= 26)
@@ -123,12 +112,10 @@ public class Vibration : MonoBehaviour
 
     public static void CreateWaveform(long[] timings, int[] amplitudes, int repeat)
     {
-        if (!isOn || remainingTime > 0)
+        if (!isOn)
         {
             return;
         }
-
-        remainingTime = timings.Length * repeat;
 #if UNITY_ANDROID && !UNITY_EDITOR
         //If Android 8.0 (API 26+) or never use the new vibrationeffects
         if (getSDKInt() >= 26)
@@ -148,6 +135,11 @@ public class Vibration : MonoBehaviour
     //Handels all new vibration effects
     private static void CreateVibrationEffect(string function, params object[] args)
     {
+        if (!isOn)
+        {
+            return;
+        }
+
         AndroidJavaObject vibrationEffect = vibrationEffectClass.CallStatic<AndroidJavaObject>(function, args);
         vibrator.Call("vibrate", vibrationEffect);
     }
@@ -155,11 +147,20 @@ public class Vibration : MonoBehaviour
     //Handles old vibration effects
     private static void OldVibrate(long milliseconds)
     {
+        if (!isOn)
+        {
+            return;
+        }
+
         vibrator.Call("vibrate", milliseconds);
     }
-
     private static void OldVibrate(long[] pattern, int repeat)
     {
+        if (!isOn)
+        {
+            return;
+        }
+
         vibrator.Call("vibrate", pattern, repeat);
     }
 

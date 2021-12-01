@@ -14,8 +14,8 @@ public class OnOffButton : MonoBehaviour, IPointerClickHandler
 
     public void SetButtonImage() 
     {
-        on.color = new Color(1, 1, 1, isOn ? 1 : 0);
-        off.color = new Color(1, 1, 1, isOn ? 0 : 1);
+        on.color = new Color(0, 0.7f, 0, isOn ? 1 : 0);
+        off.color = new Color(0.7f, 0, 0, isOn ? 0 : 1);
     }
 
     public void OnClick()
